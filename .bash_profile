@@ -2,8 +2,8 @@
 PATH=~/google_appengine:$PATH
 
 # Autostart scrits.
-if [[ -z $(pidof emacs23) ]]; then
-    emacs23 --daemon
+if [[ -z $(pidof emacs24) ]]; then
+    emacs24 --daemon
 fi
 
 if [[ -z $TMUX ]]; then
