@@ -16,3 +16,6 @@ fi
 
 # Aliases.
 alias et="emacsclient -c"
+
+# Run bashrc
+. ~/.bashrc
