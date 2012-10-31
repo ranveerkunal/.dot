@@ -9,9 +9,11 @@
 ;; Settings.
 (load-theme 'solarized-dark t)
 (global-auto-revert-mode t)
+(show-paren-mode 1)
 
 ;; Save hooks.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Keyboard.
 (global-set-key "\C-x\C-b" 'electric-buffer-list)
+(global-set-key "\C-n" 'goto-line)
