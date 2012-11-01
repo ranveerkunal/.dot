@@ -17,3 +17,4 @@
 ;; Keyboard.
 (global-set-key "\C-x\C-b" 'electric-buffer-list)
 (global-set-key "\C-n" 'goto-line)
+(global-set-key "\C-j" 'ffap)
