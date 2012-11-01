@@ -1,7 +1,6 @@
 ;; Add paths.
 (add-to-list 'load-path "~/.dot/.emacs.d/" t)
 (add-to-list 'custom-theme-load-path "~/.dot/emacs-color-theme-solarized/" t)
-(add-to-list 'custom-theme-load-path "~/.dot/zenburn-emacs/" t)
 
 ;; Require stuff.
 (require 'go-mode)

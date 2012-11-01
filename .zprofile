@@ -1,11 +1,21 @@
 # Environment variables.
-PATH=~/google_appengine:$PATH
+PATH=~/google_appengine:/usr/local/bin:$PATH
 EDITOR="emacsclient -c"
 
 # Aliases.
 alias et=$EDITOR
 alias tmuxre='tmux new-session -t default || tmux new-session -s default'
-alias foc='/usr/games/fortune -o -c'
+alias foc='fortune -o -c'
+
+# For mac
+if foc &> /dev/null; then
+else
+    alias foc=fortune
+fi
+
+if which gdircolors &> /dev/null; then
+    alias dircolors=gdircolors
+fi
 
 setopt \
 prompt_subst \
