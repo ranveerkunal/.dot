@@ -1,6 +1,10 @@
 # Environment variables.
-PATH=~/google_appengine:/usr/local/bin:$PATH
-EDITOR="emacsclient -c"
+export GOROOT=$HOME/go
+export GOBIN=$GOROOT/bin
+export GOPATH=$HOME/gocode
+export PATH=$GOPATH/bin:$GOBIN:$HOME/google_appengine:/usr/local/bin:$PATH
+export EDITOR="emacsclient -c"
+
 
 # Aliases.
 alias et=$EDITOR

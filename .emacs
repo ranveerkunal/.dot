@@ -9,6 +9,8 @@
 (load-theme 'solarized-dark t)
 (global-auto-revert-mode t)
 (show-paren-mode 1)
+(setq vc-handled-backends ())
+(setq column-number-mode t)
 
 ;; Save hooks.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -17,3 +19,4 @@
 (global-set-key "\C-x\C-b" 'electric-buffer-list)
 (global-set-key "\C-n" 'goto-line)
 (global-set-key "\C-j" 'ffap)
+(global-set-key "\C-c\C-c" 'comment-region)
