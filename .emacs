@@ -4,10 +4,12 @@
 
 ;; Add paths.
 (add-to-list 'load-path "~/.dot/.emacs.d/" t)
+(add-to-list 'load-path "~/.dot/emacs-powerline")
 (add-to-list 'custom-theme-load-path "~/.dot/emacs-color-theme-solarized/" t)
 
 ;; Require stuff.
 (require 'go-mode)
+(require 'powerline)
 
 ;; Settings.
 (load-theme 'solarized-dark t)
