@@ -11,6 +11,7 @@
 (show-paren-mode 1)
 (setq vc-handled-backends ())
 (setq column-number-mode t)
+(setq default-tab-width 4)
 
 ;; Save hooks.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

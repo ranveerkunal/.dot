@@ -2,12 +2,20 @@
 export GOROOT=$HOME/go
 export GOBIN=$GOROOT/bin
 export GOPATH=$HOME/gocode
-export PATH=$GOPATH/bin:$GOBIN:$HOME/google_appengine:/usr/local/bin:$PATH
+
+export ANDROID_DEVEL=$HOME/android
+export ANDROID_HOME=$ANDROID_DEVEL/sdk
+export NDK=$ANDROID_DEVEL/android-ndk-r8e
+export NDK_TOOLCHAIN=$ANDROID_DEVEL/ndk-toolchain
+
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GOPATH/bin:$GOBIN:$HOME/google_appengine:/usr/local/bin:$PATH
 export EDITOR="emacsclient -c -nw"
-# Aliase
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+# Aliases
 alias et=$EDITOR
 alias tmuxre='tmux new-session -t default || tmux new-session -s default'
 alias foc='fortune -o -c'
+
 # For mac
 if foc &> /dev/null; then
 else
