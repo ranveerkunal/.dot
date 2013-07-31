@@ -5,11 +5,11 @@ export GOPATH=$HOME/gocode
 export PATH=$GOPATH/bin:$GOBIN:$HOME/google_appengine:/usr/local/bin:$PATH
 export EDITOR="emacsclient -c"
 
-
 # Aliases.
 alias et=$EDITOR
 alias tmuxre='tmux new-session -t default || tmux new-session -s default'
 alias foc='fortune -o -c'
+alias gll='fileutil ls -lh --sharded'
 
 # For mac
 if foc &> /dev/null; then

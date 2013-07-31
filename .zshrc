@@ -31,3 +31,9 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 foc
+
+# Set the prompt.                                                                                                                                                                                        PP
+PROMPT='%{%F{green}%}%~%{%f%} %# '
+RPROMPT='%F{yellow}$(prompt_git_info)%{%f%}'
+
+LOCALHOME="/usr/local/google/home"
