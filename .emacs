@@ -1,3 +1,7 @@
+(package-initialize)
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
 ;; Add paths.
 (add-to-list 'load-path "~/.dot/.emacs.d/" t)
 (add-to-list 'custom-theme-load-path "~/.dot/emacs-color-theme-solarized/" t)
@@ -6,6 +10,7 @@
 (require 'go-mode)
 
 ;; Settings.
+(load-theme 'solarized-dark t)
 (global-auto-revert-mode t)
 (show-paren-mode 1)
 (setq vc-handled-backends ())
@@ -20,9 +25,3 @@
 (global-set-key "\C-n" 'goto-line)
 (global-set-key "\C-j" 'ffap)
 (global-set-key "\C-c\C-c" 'comment-region)
-
-(defun theme-init ()
-  (load-theme 'solarized-dark t)
-)
-
-(add-hook 'after-init-hook 'theme-init)
