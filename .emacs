@@ -8,7 +8,6 @@
 
 ;; Require stuff.
 (require 'go-mode)
-(require 'powerline)
 
 ;; Settings.
 (load-theme 'solarized-dark t)
