@@ -6,7 +6,6 @@
 (require 'go-mode)
 
 ;; Settings.
-(load-theme 'solarized-dark t)
 (global-auto-revert-mode t)
 (show-paren-mode 1)
 (setq vc-handled-backends ())
@@ -21,3 +20,9 @@
 (global-set-key "\C-n" 'goto-line)
 (global-set-key "\C-j" 'ffap)
 (global-set-key "\C-c\C-c" 'comment-region)
+
+(defun theme-init ()
+  (load-theme 'solarized-dark t)
+)
+
+(add-hook 'after-init-hook 'theme-init)
