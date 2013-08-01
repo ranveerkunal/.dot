@@ -40,4 +40,4 @@
 				(let ((plus-minus (vc-git--run-command-string file "diff" "--numstat" "--")))
 				  (and plus-minus
 					   (string-match "^\\([0-9]+\\)\t\\([0-9]+\\)\t" plus-minus)
-					   (format " +%s-%s " (match-string 1 plus-minus) (match-string 2 plus-minus)))))))
+					   (format " +%s-%s" (match-string 1 plus-minus) (match-string 2 plus-minus)))))))
