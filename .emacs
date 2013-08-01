@@ -12,10 +12,9 @@
 (if after-init-time (sml/setup)
   (add-hook 'after-init-hook 'sml/setup))
 
-
 ;; Settings.
 (load-theme 'solarized-dark t)
-(setq vc-handled-backends ())
+;; (setq vc-handled-backends ())
 (global-auto-revert-mode t)
 (show-paren-mode 1)
 (setq column-number-mode t)
@@ -30,9 +29,15 @@
 (global-set-key "\C-j" 'ffap)
 (global-set-key "\C-c\C-c" 'comment-region)
 
-(custom-set-variables
- '(sml/name-width 80))
-
-(custom-set-faces
- '(sml/col-number ((t (:inherit sml/global))))
- '(sml/global ((t (:foreground "white")))))
+;; Modeline
+(setq sml/name-width 80)
+(setq sml/vc-mode-show-backend t)
+(set-face-attribute 'sml/global nil :foreground '"white")
+(set-face-attribute 'sml/col-number nil :inherit 'sml/global)
+(defadvice vc-git-mode-line-string (after plus-minus (file) compile activate)
+  (setq ad-return-value
+		(concat ad-return-value
+				(let ((plus-minus (vc-git--run-command-string file "diff" "--numstat" "--")))
+				  (and plus-minus
+					   (string-match "^\\([0-9]+\\)\t\\([0-9]+\\)\t" plus-minus)
+					   (format " +%s-%s " (match-string 1 plus-minus) (match-string 2 plus-minus)))))))
