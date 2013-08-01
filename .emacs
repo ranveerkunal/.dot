@@ -1,6 +1,7 @@
 (package-initialize)
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 ;; Add paths.
 (add-to-list 'load-path "~/.dot/.emacs.d/" t)
@@ -28,8 +29,9 @@
 (global-set-key "\C-n" 'goto-line)
 (global-set-key "\C-j" 'ffap)
 (global-set-key "\C-c\C-c" 'comment-region)
+(global-set-key "\C-x\C-g" 'magit-status)
 
-;; Modeline
+;; Modeline.
 (setq sml/name-width 80)
 (setq sml/vc-mode-show-backend t)
 (set-face-attribute 'sml/global nil :foreground '"white")
