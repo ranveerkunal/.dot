@@ -6,9 +6,16 @@
 ;; Add paths.
 (add-to-list 'load-path "~/.dot/.emacs.d/" t)
 (add-to-list 'custom-theme-load-path "~/.dot/.emacs.d/themes/emacs-color-theme-solarized/" t)
+(add-to-list 'load-path "~/gocode/src/github.com/dougm/goflymake")
+(add-to-list 'load-path "~/gocode/src/github.com/dougm/goflymake")
 
 ;; Require stuff.
 (require 'go-mode)
+(require 'go-mode-load)
+(require 'go-flycheck)
+(setq gofmt-command "goimports")
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 (require 'smart-mode-line)
 (if after-init-time (sml/setup)
   (add-hook 'after-init-hook 'sml/setup))
@@ -23,6 +30,7 @@
 
 ;; Save hooks.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'gofmt-before-save)
 
 ;; Keyboard.
 (global-set-key "\C-x\C-b" 'electric-buffer-list)
