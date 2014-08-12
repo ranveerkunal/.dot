@@ -5,7 +5,6 @@
 
 ;; Add paths.
 (add-to-list 'load-path "~/.dot/.emacs.d/" t)
-(add-to-list 'custom-theme-load-path "~/.dot/.emacs.d/themes/emacs-color-theme-solarized/" t)
 (add-to-list 'load-path "~/gocode/src/github.com/dougm/goflymake")
 (add-to-list 'load-path "~/gocode/src/github.com/dougm/goflymake")
 
@@ -21,11 +20,12 @@
   (add-hook 'after-init-hook 'sml/setup))
 
 ;; Settings.
-(load-theme 'solarized-dark t)
+(load-theme 'monokai t)
 ;; (setq vc-handled-backends ())
 (global-auto-revert-mode t)
 (show-paren-mode 1)
 (setq column-number-mode t)
+(setq-default indent-tabs-mode nil)
 (setq default-tab-width 4)
 
 ;; Save hooks.
@@ -37,7 +37,13 @@
 (global-set-key "\C-n" 'goto-line)
 (global-set-key "\C-j" 'ffap)
 (global-set-key "\C-c\C-c" 'comment-region)
-(global-set-key "\C-x\C-g" 'magit-status)
+(global-set-key "\C-xg" 'magit-status)
+(global-set-key "\C-xo" 'switch-window)
+
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
 
 ;; Modeline.
 (setq sml/name-width 80)
