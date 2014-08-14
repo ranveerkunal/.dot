@@ -6,14 +6,13 @@
 ;; Add paths.
 (add-to-list 'load-path "~/.dot/.emacs.d/" t)
 (add-to-list 'load-path "~/gocode/src/github.com/dougm/goflymake")
-(add-to-list 'load-path "~/gocode/src/github.com/dougm/goflymake")
 
 ;; Require stuff.
 (require 'go-mode)
 (require 'go-mode-load)
 (require 'go-flycheck)
 (setq gofmt-command "goimports")
-(add-hook 'after-init-hook #'global-flycheck-mode)
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (require 'smart-mode-line)
 (if after-init-time (sml/setup)
@@ -28,9 +27,17 @@
 (setq-default indent-tabs-mode nil)
 (setq default-tab-width 4)
 
+(defun my-go-mode-hook ()
+  (flycheck-mode)
+  (add-hook 'before-save-hook 'gofmt-before-save))
+(add-hook 'go-mode-hook 'my-go-mode-hook)
+
+(defun my-js-mode-hook ()
+  (flycheck-mode))
+(add-hook 'js-mode-hook 'my-js-mode-hook)
+
 ;; Save hooks.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-(add-hook 'before-save-hook 'gofmt-before-save)
 
 ;; Keyboard.
 (global-set-key "\C-x\C-b" 'electric-buffer-list)

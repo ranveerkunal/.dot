@@ -41,3 +41,6 @@ PROMPT='%{%F{green}%}%~%{%f%} %# '
 RPROMPT='%F{yellow}$(prompt_git_info)%{%f%}'
 
 LOCALHOME="/usr/local/google/home"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
