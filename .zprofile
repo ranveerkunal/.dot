@@ -2,6 +2,10 @@
 export GOROOT=$HOME/go
 export GOBIN=$GOROOT/bin
 export GOPATH=$HOME/gocode
+export GOROOT_BOOTSTRAP=/opt/homebrew/opt/go/libexec/
+export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
+export DOCKER_CERT_PATH=/Users/ranveer/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
 
 # Aliases.
 export ANDROID_DEVEL=$HOME/android
@@ -9,7 +13,7 @@ export ANDROID_HOME=$ANDROID_DEVEL/sdk
 export NDK=$ANDROID_DEVEL/android-ndk-r8e
 export NDK_TOOLCHAIN=$ANDROID_DEVEL/ndk-toolchain
 
-export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GOPATH/bin:$GOBIN:$HOME/google_appengine:/usr/local/bin:$PATH
+export PATH=/usr/local/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GOPATH/bin:$GOBIN:$HOME/google_appengine:/opt/homebrew/bin:$PATH
 export EDITOR="emacsclient -c -nw"
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 alias et=$EDITOR
