@@ -34,7 +34,10 @@ foc
 
 # Set the prompt.                                                                                                                                                                                        PP
 PROMPT='%{%F{green}%}$(collapse_pwd)%{%f%} %# '
-RPROMPT='%F{yellow}$(prompt_git_info)%{%f%}'
+
+source ~/.dot/zsh-vcs-prompt/zshrc.sh
+ZSH_VCS_PROMPT_ENABLE_CACHING='true'
+RPROMPT='$(vcs_super_info)'
 
 LOCALHOME="/usr/local/google/home"
 
