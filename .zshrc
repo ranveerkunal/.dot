@@ -35,7 +35,7 @@ foc
 # Set the prompt.                                                                                                                                                                                        PP
 PROMPT='%{%F{green}%}$(collapse_pwd)%{%f%} %# '
 
-source ~/.dot/zsh-vcs-prompt/zshrc.sh
+source ~/.zsh/zsh-vcs-prompt/zshrc.sh
 ZSH_VCS_PROMPT_ENABLE_CACHING='true'
 RPROMPT='$(vcs_super_info)'
 
