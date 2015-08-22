@@ -13,7 +13,7 @@ export ANDROID_HOME=$ANDROID_DEVEL/sdk
 export NDK=$ANDROID_DEVEL/android-ndk-r8e
 export NDK_TOOLCHAIN=$ANDROID_DEVEL/ndk-toolchain
 
-export PATH=/usr/local/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GOPATH/bin:$GOBIN:$HOME/google_appengine:/opt/homebrew/bin:$PATH
+export PATH=/Users/ranveer/homebrew/bin:/usr/local/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GOPATH/bin:$GOBIN:$HOME/google_appengine:/opt/homebrew/bin:$PATH
 export EDITOR="emacsclient -c -nw"
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 alias et=$EDITOR
