@@ -2,7 +2,7 @@
 export GOROOT=$HOME/go
 export GOBIN=$GOROOT/bin
 export GOPATH=$HOME/gocode
-export GOROOT_BOOTSTRAP=/opt/homebrew/opt/go/libexec/
+export GOROOT_BOOTSTRAP=$HOME/homebrew/opt/go/libexec
 export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
 export DOCKER_CERT_PATH=/Users/ranveer/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
