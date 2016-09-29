@@ -4,11 +4,13 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 ;; Add paths.
-(add-to-list 'load-path "~/.dot/.emacs.d/" t)
 (add-to-list 'load-path "~/gocode/src/github.com/dougm/goflymake")
 
 ;; Require stuff.
 (require 'go-mode)
+(require 'protobuf-mode)
+(require 'smart-mode-line)
+
 ;; (require 'go-mode-load)
 (require 'go-flycheck)
 (setq gofmt-command "goimports")

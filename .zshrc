@@ -39,7 +39,5 @@ source ~/.zsh/zsh-vcs-prompt/zshrc.sh
 ZSH_VCS_PROMPT_ENABLE_CACHING='true'
 RPROMPT='$(vcs_super_info)'
 
-LOCALHOME="/usr/local/google/home"
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+source '/Users/ranveer.kunal/google-cloud-sdk/path.zsh.inc'
+source '/Users/ranveer.kunal/google-cloud-sdk/completion.zsh.inc'

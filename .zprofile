@@ -1,37 +1,21 @@
 # Environment variables.
-export GOROOT=$HOME/go
+export GOROOT=/usr/local/Cellar/go/1.7/libexec
 export GOBIN=$GOROOT/bin
 export GOPATH=$HOME/gocode
-export GOROOT_BOOTSTRAP=$HOME/homebrew/opt/go/libexec
-export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
-export DOCKER_CERT_PATH=/Users/ranveer/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-
-# Aliases.
-export ANDROID_DEVEL=$HOME/android
-export ANDROID_HOME=$ANDROID_DEVEL/sdk
-export NDK=$ANDROID_DEVEL/android-ndk-r8e
-export NDK_TOOLCHAIN=$ANDROID_DEVEL/ndk-toolchain
-
-export PATH=/Users/ranveer/homebrew/bin:/usr/local/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GOPATH/bin:$GOBIN:$HOME/google_appengine:/opt/homebrew/bin:$PATH
+export PATH=/usr/local/bin:$GOPATH/bin:$GOBIN:$PATH
 export EDITOR="emacsclient -c -nw"
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+export PATH=$HOME/anaconda3/bin:$PATH
+export MANPATH=$HOME/anaconda3/share/man:$MANPATH
+export JAVA_HOME=`/usr/libexec/java_home`
+export PATH=$JAVA_HOME/bin:$PATH
+export ES_USER=amadeira
+export ES_PWD=feelinsolucky123.
+
+# Aliases
 alias et=$EDITOR
 alias tmuxre='tmux new-session -t default || tmux new-session -s default'
 alias git='noglob git'
-alias fileutil='noglob fileutil'
-alias foc='fortune -o -c'
-alias gll='fileutil ls -lh --sharded'
-
-# For mac
-if foc &> /dev/null; then
-else
-    alias foc=fortune
-fi
-
-if which gdircolors &> /dev/null; then
-    alias dircolors=gdircolors
-fi
+alias foc='fortune -o'
 
 setopt \
 prompt_subst \
@@ -44,6 +28,8 @@ typeset -ga preexec_functions
 typeset -ga precmd_functions
 typeset -ga chpwd_functions
 
+source activate isnap
+
 # Autostart scrits.
 if [[ -z $(pidof emacs) ]]; then
     emacs --daemon
@@ -52,3 +38,6 @@ fi
 if [[ -z $TMUX ]]; then
     tmuxre
 fi
+
+# Mac
+alias dircolors=gdircolors
