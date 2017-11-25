@@ -41,3 +41,13 @@ RPROMPT='$(vcs_super_info)'
 
 source '/Users/ranveer.kunal/google-cloud-sdk/path.zsh.inc'
 source '/Users/ranveer.kunal/google-cloud-sdk/completion.zsh.inc'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /Users/ranveer.kunal/google-cloud-sdk/path.zsh.inc ]; then
+  source '/Users/ranveer.kunal/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/ranveer.kunal/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/Users/ranveer.kunal/google-cloud-sdk/completion.zsh.inc'
+fi
