@@ -4,6 +4,7 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 ;; Add paths.
+(add-to-list 'load-path "~/.emacs.d/el")
 (add-to-list 'load-path "~/gocode/src/github.com/dougm/goflymake")
 
 ;; Require stuff.
@@ -49,6 +50,12 @@
 (global-set-key "\C-xg" 'magit-status)
 (global-set-key "\C-xo" 'switch-window)
 
+(defun my-html-mode-config ()
+  (local-unset-key (kbd "\C-c <left>"))
+  (local-unset-key (kbd "\C-c <right>")))
+
+(add-hook 'html-mode-hook 'my-html-mode-config)
+
 (global-set-key (kbd "C-c <left>")  'windmove-left)
 (global-set-key (kbd "C-c <right>") 'windmove-right)
 (global-set-key (kbd "C-c <up>")    'windmove-up)
@@ -80,3 +87,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(add-hook 'after-save-hook
+  (lambda()
+    (if (string-match "BUILD" (file-name-base (buffer-file-name)))
+        (progn
+          (shell-command (concat "buildifier " (buffer-file-name)))
+          (find-alternate-file (buffer-file-name))))))
