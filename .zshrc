@@ -17,7 +17,7 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+eval $(gdircolors ~/.dircolors/dircolors.256dark)
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -32,22 +32,11 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 foc
 
-# Set the prompt.                                                                                                                                                                                        PP
+# Set the prompt.
 PROMPT='%{%F{green}%}$(collapse_pwd)%{%f%} %# '
 
 source ~/.zsh/zsh-vcs-prompt/zshrc.sh
 ZSH_VCS_PROMPT_ENABLE_CACHING='true'
 RPROMPT='$(vcs_super_info)'
 
-source '/Users/ranveer.kunal/google-cloud-sdk/path.zsh.inc'
-source '/Users/ranveer.kunal/google-cloud-sdk/completion.zsh.inc'
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f /Users/ranveer.kunal/google-cloud-sdk/path.zsh.inc ]; then
-  source '/Users/ranveer.kunal/google-cloud-sdk/path.zsh.inc'
-fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f /Users/ranveer.kunal/google-cloud-sdk/completion.zsh.inc ]; then
-  source '/Users/ranveer.kunal/google-cloud-sdk/completion.zsh.inc'
-fi
