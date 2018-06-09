@@ -5,17 +5,16 @@
 
 ;; Add paths.
 (add-to-list 'load-path "~/.emacs.d/el")
-(add-to-list 'load-path "~/gocode/src/github.com/dougm/goflymake")
 
 ;; Require stuff.
 (require 'go-mode)
 (require 'protobuf-mode)
 (require 'smart-mode-line)
 
-;; (require 'go-mode-load)
-(require 'go-flycheck)
 (setq gofmt-command "goimports")
-;; (add-hook 'after-init-hook #'global-flycheck-mode)
+;;(require 'flycheck-gometalinter)
+;;(eval-after-load 'flycheck
+;;  '(add-hook 'flycheck-mode-hook #'flycheck-gometalinter-setup))
 
 (require 'smart-mode-line)
 (if after-init-time (sml/setup)
@@ -28,10 +27,10 @@
 (show-paren-mode 1)
 (setq column-number-mode t)
 (setq-default indent-tabs-mode nil)
-(setq default-tab-width 4)
+(setq-default tab-width 4)
 
 (defun my-go-mode-hook ()
-  (flycheck-mode)
+  ;;(flycheck-mode)
   (add-hook 'before-save-hook 'gofmt-before-save))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 

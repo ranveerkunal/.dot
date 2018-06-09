@@ -1,5 +1,5 @@
 # Environment variables.
-export GOROOT=/usr/local/Cellar/go/1.9.2/libexec
+export GOROOT=/usr/local/Cellar/go/1.10.3/libexec
 export GOBIN=$GOROOT/bin
 export GOPATH=$HOME/gocode
 export PATH=/usr/local/bin:$GOPATH/bin:$GOBIN:$PATH
