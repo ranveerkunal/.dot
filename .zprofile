@@ -6,8 +6,6 @@ export PATH=/usr/local/bin:$GOPATH/bin:$GOBIN:$PATH
 export EDITOR="emacsclient -c -nw"
 export PATH=$HOME/miniconda2/bin:$PATH
 export MANPATH=$HOME/miniconda2/share/man:$MANPATH
-export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home'
-export PATH=$JAVA_HOME/bin:$PATH
 export CLICOLOR=YES
 
 # Aliases
@@ -34,7 +32,7 @@ source activate base
 
 # Autostart scrits.
 if [[ -z $(pidof emacs) ]]; then
-    emacs --daemon
+    GOPATH=$HOME/src/.gopath emacs --daemon
 fi
 
 if [[ -z $TMUX ]]; then

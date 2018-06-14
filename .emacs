@@ -12,9 +12,9 @@
 (require 'smart-mode-line)
 
 (setq gofmt-command "goimports")
-;;(require 'flycheck-gometalinter)
-;;(eval-after-load 'flycheck
-;;  '(add-hook 'flycheck-mode-hook #'flycheck-gometalinter-setup))
+(require 'flycheck-gometalinter)
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-gometalinter-setup))
 
 (require 'smart-mode-line)
 (if after-init-time (sml/setup)
@@ -30,7 +30,7 @@
 (setq-default tab-width 4)
 
 (defun my-go-mode-hook ()
-  ;;(flycheck-mode)
+  (flycheck-mode)
   (add-hook 'before-save-hook 'gofmt-before-save))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
