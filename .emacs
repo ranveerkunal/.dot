@@ -1,13 +1,14 @@
 (package-initialize)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+                         ("melpa" . "http://stable.melpa.org/packages/")))
 
 ;; Add paths.
 (add-to-list 'load-path "~/.emacs.d/el")
 
 ;; Require stuff.
 (require 'go-mode)
+(require 'bazel-mode)
 (require 'protobuf-mode)
 (require 'smart-mode-line)
 
@@ -15,6 +16,16 @@
 (require 'flycheck-gometalinter)
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-gometalinter-setup))
+(setq flycheck-gometalinter-vendor t)
+(setq flycheck-gometalinter-errors-only t)
+(setq flycheck-gometalinter-fast t)
+(setq flycheck-gometalinter-test t)
+(setq flycheck-gometalinter-disable-linters '("gotype" "gocyclo"))
+(setq flycheck-gometalinter-disable-all t)
+(setq flycheck-gometalinter-enable-linters '("golint"))
+(setq flycheck-gometalinter-deadline "10s")
+(setq dart-enable-analysis-server t)
+(add-hook 'dart-mode-hook 'flycheck-mode)
 
 (require 'smart-mode-line)
 (if after-init-time (sml/setup)
@@ -28,18 +39,18 @@
 (setq column-number-mode t)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+(setq js-indent-level 2)
+(add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("/BUILD\\(\\..*\\)?\\'" . bazel-mode))
 
 (defun my-go-mode-hook ()
   (flycheck-mode)
   (add-hook 'before-save-hook 'gofmt-before-save))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
-(defun my-js-mode-hook ()
-  (flycheck-mode))
-(add-hook 'js-mode-hook 'my-js-mode-hook)
-
 ;; Save hooks.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'bazel-mode-hook (lambda () (add-hook 'before-save-hook #'bazel-format nil t)))
 
 ;; Keyboard.
 (global-set-key "\C-x\C-b" 'electric-buffer-list)
@@ -79,17 +90,13 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))))
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+ '(package-selected-packages
+   (quote
+    (dart-mode golint rjsx-mode jsx-mode bazel-mode smart-mode-line protobuf-mode monokai-theme go-mode flycheck-gometalinter))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(add-hook 'after-save-hook
-  (lambda()
-    (if (string-match "BUILD" (file-name-base (buffer-file-name)))
-        (progn
-          (shell-command (concat "buildifier " (buffer-file-name)))
-          (find-alternate-file (buffer-file-name))))))
