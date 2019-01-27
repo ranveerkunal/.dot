@@ -67,15 +67,26 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 # Exports
-export GOROOT=/usr/local/Cellar/go/1.10.3/libexec
+export GOROOT=/usr/local/Cellar/go/1.11.2/libexec
 export GOBIN=$GOROOT/bin
 export GOPATH=$HOME/gocode
 export PATH=/usr/local/bin:$GOPATH/bin:$GOBIN:$PATH
 export EDITOR="emacsclient -c -nw"
 export PATH=$HOME/miniconda2/bin:$PATH
+export PATH=$HOME/.pub-cache/bin:$PATH
 export PATH=$HOME/flutter/bin:$PATH
+export PATH=$HOME/google-cloud-sdk/bin:$PATH
 export MANPATH=$HOME/miniconda2/share/man:$MANPATH
 export CLICOLOR=YES
+export FLUTTER_HOME=$HOME/flutter
+
+export ANDROID_APP_DEBUG_KEYSTORE=$HOME/keystore/android.debug.keystore
+launchctl setenv ANDROID_APP_DEBUG_KEYSTORE $ANDROID_APP_DEBUG_KEYSTORE
+
+export ANDROID_APP_DEBUG_KEYSTORE_PASSWORD=5MkxsP3RzZ7\`DWK9
+launchctl setenv ANDROID_APP_DEBUG_KEYSTORE_PASSWORD $ANDROID_APP_DEBUG_KEYSTORE_PASSWORD
+export ANDROID_APP_DEBUG_KEY_PASSWORD=5MkxsP3RzZ7\`DWK9
+launchctl setenv ANDROID_APP_DEBUG_KEY_PASSWORD $ANDROID_APP_DEBUG_KEY_PASSWORD
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -92,7 +103,7 @@ export CLICOLOR=YES
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
-source activate x
+source activate py36
 
 # Aliases
 alias et=$EDITOR
@@ -109,6 +120,18 @@ if [[ -z $(pidof emacs) ]]; then
     GOPATH=$HOME/src/bazel-bin/gopath emacs --daemon
 fi
 
-if [[ -z $TMUX ]]; then
+if [[ -z $TMUX ]] && [[ -n $ITERM_SESSION_ID ]]; then
     tmuxre
 fi
+
+foc
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ranveer/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ranveer/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ranveer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ranveer/google-cloud-sdk/completion.zsh.inc'; fi
